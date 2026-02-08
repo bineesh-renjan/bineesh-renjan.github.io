@@ -1,0 +1,5 @@
+remote_theme: pages-themes/time-machine@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
+title: [Bineesh Thanthonical Renjan]
+description: [“A professional portfolio showcasing business analysis, project management, and data-driven problem solving for global opportunities.”]
