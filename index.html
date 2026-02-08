@@ -1,176 +1,572 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bineesh Renjan | Business Analyst Portfolio</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bineesh Renjan | Business Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#2563eb', /* Royal Blue */
+                            dark: '#1d4ed8'
+                        },
+                        secondary: {
+                            light: '#0891b2', /* Cyan/Teal for data feel */
+                            dark: '#0e7490'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .light .gradient-text {
+            background-image: linear-gradient(45deg, #2563eb, #0891b2);
+        }
+        .dark .gradient-text {
+            background-image: linear-gradient(45deg, #60a5fa, #22d3ee);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
+<body class="light bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    
+    <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold gradient-text">BR.</a>
+                
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#academic" class="nav-link">Academic Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="theme-toggle p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#academic" class="nav-link">Academic Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
 
-<body class="bg-gray-50 text-gray-900">
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Bineesh Renjan</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Business & Operations Analyst</h2>
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg">
+                        Driving operational excellence and data-driven decision-making. 
+                        I specialize in BPM, process optimization, and generating actionable insights using Power BI, Tableau, and SQL.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-opacity text-center">
+                            Contact Me
+                        </a>
+                        <a href="#experience" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-center">
+                            View Experience
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-slide-up">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-light dark:border-primary-dark shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80" 
+                             alt="Bineesh Renjan" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-primary-light dark:bg-primary-dark opacity-10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ================= NAV ================= -->
-<header class="fixed w-full bg-white shadow z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <span class="text-xl font-bold">Bineesh Renjan</span>
-    <nav class="space-x-6 hidden md:block">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Professional <span class="gradient-text">Summary</span></h2>
+            
+            <div class="max-w-4xl mx-auto bg-white dark:bg-gray-700 p-8 rounded-lg shadow-sm">
+                <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                    [cite_start]Results-oriented Analyst with over 3 years of experience driving operational excellence and data-driven decision-making across logistics and retail environments[cite: 5]. 
+                    [cite_start]I have a proven track record in Business Process Management (BPM) and process optimisation, delivering a 12% efficiency gain and 35% defect reduction at Amazon[cite: 6].
+                </p>
+                <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                    [cite_start]Experienced in BPMN 2.0 modelling, UAT, KPI reporting, and project coordination within Agile environments using Jira and Confluence[cite: 7]. 
+                    [cite_start]I am adept at leveraging Power BI, Tableau, and SQL to generate actionable insights, reduce inventory risk by 40%, and ensure GDPR compliance across global operations[cite: 8].
+                </p>
+                
+                <div class="mt-8 border-t border-gray-200 dark:border-gray-600 pt-6">
+                    <h3 class="text-xl font-semibold mb-4">Languages</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-full">English (Advanced)</span>
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-full">Hindi (Intermediate)</span>
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-full">French (A1)</span>
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-full">Malayalam (Advanced)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ================= HERO ================= -->
-<section id="home" class="min-h-screen flex items-center pt-32">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Work <span class="gradient-text">Experience</span></h2>
+            
+            <div class="space-y-12">
+                <div class="flex flex-col md:flex-row gap-6 animate-slide-up">
+                    <div class="md:w-1/4">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">Process Lead</h3>
+                        <p class="text-primary-light dark:text-primary-dark font-semibold">Amazon Fulfillment Center</p>
+                        <p class="text-sm text-gray-500 mt-1">Apr 2025 - Current | Bristol, UK</p>
+                    </div>
+                    <div class="md:w-3/4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-primary-light">
+                        <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Coordinated daily operational plans for 10-20 associates; optimised labour allocation via live volume, improving UPH by 8-12%[cite: 18].</li>
+                            [cite_start]<li>Monitored project KPIs and operational risks, triggering Andon alerts and resolving blockers within 15 minutes[cite: 19].</li>
+                            [cite_start]<li>Applied Root Cause Analysis (5 Whys) to eliminate recurring defects, reducing repeat issues by 35% within two weeks[cite: 20].</li>
+                            [cite_start]<li>Built lightweight UPH/DPMO trackers in Excel and Power BI, enabling data-led hourly huddles and reducing missed targets by 20%[cite: 21].</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <!-- TEXT -->
-    <div>
-      <h1 class="text-5xl font-bold mb-4">Hi, I’m Bineesh Renjan</h1>
-      <h2 class="text-2xl font-semibold mb-6">
-        Business Analyst | Process Analyst | Data & Operations
-      </h2>
-      <p class="text-lg text-gray-700 leading-relaxed">
-        Results-oriented Analyst with over 3 years of experience driving operational excellence
-        and data-driven decision-making across logistics and retail environments. Proven track
-        record in Business Process Management (BPM) and process optimisation, delivering a 12%
-        efficiency gain and 35% defect reduction at Amazon.
-      </p>
-    </div>
+                <div class="flex flex-col md:flex-row gap-6 animate-slide-up">
+                    <div class="md:w-1/4">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">Business Analyst Intern</h3>
+                        <p class="text-primary-light dark:text-primary-dark font-semibold">Victoria Solutions</p>
+                        <p class="text-sm text-gray-500 mt-1">Feb 2025 - Mar 2025 | London, UK</p>
+                    </div>
+                    <div class="md:w-3/4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-secondary-light">
+                        <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Automated weekly KPI reporting (40% faster) with Tableau on SQL/Excel; programmed scheduled refreshes plus automated leadership alerts[cite: 23].</li>
+                            [cite_start]<li>Mapped to-be processes using BPMN 2.0, reducing handoffs by 20% while strengthening SLA adherence and change control[cite: 24].</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <!-- PHOTO (UNCHANGED IMAGE) -->
-    <div class="flex justify-centre">
-      <img
-        src="assets/profile.jpg"
-        alt="Bineesh Renjan"
-        class="w-72 h-72 rounded-full object-cover object-top shadow-lg border-4 border-gray-300"
-      />
-    </div>
+                <div class="flex flex-col md:flex-row gap-6 animate-slide-up">
+                    <div class="md:w-1/4">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">Corporate Relations Exec.</h3>
+                        <p class="text-primary-light dark:text-primary-dark font-semibold">Seventh Sense Solutions</p>
+                        <p class="text-sm text-gray-500 mt-1">Apr 2022 - Sep 2022 | Karnataka, India</p>
+                    </div>
+                    <div class="md:w-3/4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-gray-400">
+                        <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Facilitated 10+ stakeholder workshops to capture requirements and mitigate operational risks for projects valued at over $50k[cite: 33].</li>
+                            [cite_start]<li>Produced executive-ready decks that secured strategic approval[cite: 33].</li>
+                            [cite_start]<li>Tracked 50+ action items; driving a 10% improvement in departmental process efficiency through timely follow-ups[cite: 34].</li>
+                        </ul>
+                    </div>
+                </div>
 
-  </div>
-</section>
+                <div class="flex flex-col md:flex-row gap-6 animate-slide-up">
+                    <div class="md:w-1/4">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">Business Ops Analyst</h3>
+                        <p class="text-primary-light dark:text-primary-dark font-semibold">Pradhan Mantri Jan Aushadhi Kendra</p>
+                        <p class="text-sm text-gray-500 mt-1">Dec 2020 - Mar 2022 | Kerala, India</p>
+                    </div>
+                    <div class="md:w-3/4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-gray-400">
+                        <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Introduced Power BI KPI suites to flag inventory risk for 500+ SKU lines, reducing stockouts by 40% and optimizing working capital[cite: 37].</li>
+                            [cite_start]<li>Coordinated User Acceptance Testing (UAT) for POS enhancements across 10+ locations, ensuring 100% test coverage[cite: 38].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="py-20 bg-gray-100">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-8">About Me</h2>
+    <section id="academic" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Academic <span class="gradient-text">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">MSc Thesis on AI & Big Data</h3>
+                    <p class="text-sm text-gray-500 mb-4">May 2024 - Aug 2024 | Cardiff Metropolitan University</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                        [cite_start]<li>Embedded privacy-by-design principles; completing 3 Data Protection Impact Assessments (DPIAs) under UK GDPR[cite: 27].</li>
+                        [cite_start]<li>Presented AI governance findings to 6 university departments; authored a proposal that improved data access control policies by 20%[cite: 28].</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">Sustainable Business Practices</h3>
+                    <p class="text-sm text-gray-500 mb-4">Oct 2023 - Jan 2024 | Cardiff Council</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                        [cite_start]<li>Devised sustainable waste-management and procurement processes driving a 15% improvement in resource efficiency across 5 departments[cite: 30].</li>
+                        [cite_start]<li>Prioritised a feasibility-scored backlog of 10+ sustainability initiatives that reduced projected carbon footprint by 10%[cite: 31].</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <p class="mb-6 leading-relaxed">
-      Experienced in BPMN 2.0 modelling, UAT, KPI reporting, and project coordination within
-      Agile environments using Jira and Confluence. Adept at leveraging Power BI, Tableau,
-      and SQL to generate actionable insights, reduce inventory risk by 40%, and ensure GDPR
-      compliance across global operations.
-    </p>
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Core <span class="gradient-text">Competencies</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-primary-light/10 dark:bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 text-primary-light dark:text-primary-dark">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4">Data & Insights</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Power BI</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Tableau</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">SQL (Basic)</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Advanced Excel</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">KPI Reporting</span>
+                    </div>
+                </div>
 
-    <p class="leading-relaxed">
-      <strong>Location:</strong> Wales, United Kingdom<br/>
-      <strong>Mobility:</strong> Immediate Start | Work Permit Sponsorship required |
-      Willing to Relocate Upon Offer
-    </p>
-  </div>
-</section>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full flex items-center justify-center mb-4 text-secondary-light dark:text-secondary-dark">
+                        <i class="fas fa-project-diagram text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4">Business Analysis</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">BPMN 2.0</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Requirements Gathering</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">UAT</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Root Cause Analysis</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Change Control</span>
+                    </div>
+                </div>
 
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience" class="py-20">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-12">Professional Experience</h2>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4 text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-tools text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4">Governance & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Agile/Scrum</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Jira & Confluence</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">UK GDPR</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MS Project</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Operational Risk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- AMAZON -->
-    <div class="mb-10">
-      <h3 class="text-xl font-semibold">
-        Process Lead, Amazon Fulfillment Center — Bristol, UK
-      </h3>
-      <p class="italic mb-3">Apr 2025 – Current</p>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Coordinated daily operational plans for 10–20 associates; optimised labour allocation via live volume, improving UPH by 8–12%.</li>
-        <li>Monitored project KPIs and operational risks, triggering Andon alerts and resolving blockers within 15 minutes.</li>
-        <li>Applied Root Cause Analysis (5 Whys) to eliminate recurring defects, reducing repeat issues by 35% within two weeks.</li>
-        <li>Built lightweight UPH/DPMO trackers in Excel and Power BI, enabling data-led hourly huddles and reducing missed targets by 20%.</li>
-      </ul>
-    </div>
+    <section id="education" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Education</h2>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm mb-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">MSc International Business Management</h3>
+                            <span class="bg-primary-light text-white text-xs px-2 py-1 rounded">Merit</span>
+                        </div>
+                        <p class="text-secondary-light dark:text-secondary-dark font-medium">Cardiff Metropolitan University, UK</p>
+                        <p class="text-sm text-gray-500 mb-2">Sep 2023 - Oct 2024</p>
+                        [cite_start]<p class="text-sm text-gray-600 dark:text-gray-300">Focused on strategy, operations, finance, and organizational change with applied business analysis, governance, and GDPR compliance[cite: 45].</p>
+                    </div>
 
-    <!-- INTERN -->
-    <div class="mb-10">
-      <h3 class="text-xl font-semibold">
-        Business Analyst Intern, Victoria Solutions — London, UK
-      </h3>
-      <p class="italic mb-3">Feb 2025 – Mar 2025</p>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Automated weekly KPI reporting (40% faster) with Tableau on SQL/Excel; programmed scheduled refreshes plus automated leadership alerts.</li>
-        <li>Mapped to-be processes using BPMN 2.0, reducing handoffs by 20% while strengthening SLA adherence and change control.</li>
-      </ul>
-    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">B Com: Finance & Actuarial Science</h3>
+                        </div>
+                        <p class="text-secondary-light dark:text-secondary-dark font-medium">Jain (Deemed-to-be) University, India</p>
+                        <p class="text-sm text-gray-500 mb-2">Jul 2017 - Feb 2022</p>
+                        [cite_start]<p class="text-sm text-gray-600 dark:text-gray-300">Solid foundation in finance, economics, and statistics; quantitative analysis of business & financial performance[cite: 49].</p>
+                    </div>
+                </div>
 
-    <!-- CORPORATE -->
-    <div class="mb-10">
-      <h3 class="text-xl font-semibold">
-        Corporate Relations Executive, Seventh Sense Solutions — Karnataka, India
-      </h3>
-      <p class="italic mb-3">Apr 2022 – Sep 2022</p>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Facilitated 10+ stakeholder workshops to capture requirements and mitigate operational risks for projects valued at over $50k.</li>
-        <li>Tracked 50+ action items, driving a 10% improvement in departmental process efficiency.</li>
-      </ul>
-    </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-8 text-center md:text-left">Certifications</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-certificate text-yellow-500 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Microsoft Project Management Fundamentals</h4>
+                                [cite_start]<p class="text-sm text-gray-600 dark:text-gray-300">Microsoft, Feb 2026 [cite: 40]</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-certificate text-yellow-500 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Google Professional Data Analytics</h4>
+                                [cite_start]<p class="text-sm text-gray-600 dark:text-gray-300">Google, Nov 2024 [cite: 41]</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-certificate text-yellow-500 mt-1 mr-3"></i>
+                            <div>
+                                <h4 class="font-bold">Corporate Finance Institute (CFI) Suite</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Jan 2022</p>
+                                <ul class="text-xs text-gray-500 mt-1 ml-1 space-y-1">
+                                    [cite_start]<li>• Excel Fundamentals - Formulas for Finance [cite: 51]</li>
+                                    [cite_start]<li>• Introduction to Capital Markets [cite: 52]</li>
+                                    [cite_start]<li>• Math Fundamentals for Capital Markets [cite: 54]</li>
+                                    [cite_start]<li>• Economics for Capital Markets [cite: 56]</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- OPS -->
-    <div>
-      <h3 class="text-xl font-semibold">
-        Business Operations Analyst, Pradhan Mantri Jan Aushadhi Kendra — Kerala, India
-      </h3>
-      <p class="italic mb-3">Dec 2020 – Mar 2022</p>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Introduced Power BI KPI suites to flag inventory risk; reducing stockouts by 40% for 500+ SKU lines.</li>
-        <li>Coordinated User Acceptance Testing (UAT) for POS enhancements across 10+ locations.</li>
-      </ul>
-    </div>
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Get In <span class="gradient-text">Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="mb-8 text-gray-600 dark:text-gray-300">
+                        [cite_start]I am available for immediate start and willing to relocate upon offer[cite: 2, 3].
+                        Work Permit Sponsorship required.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-envelope text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <a href="mailto:tr.bnrenjan@gmail.com" class="text-gray-600 dark:text-gray-300 hover:text-primary-light">tr.bnrenjan@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-phone-alt text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-600 dark:text-gray-300">+44 7767 567345</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-map-marker-alt text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Wales, United Kingdom</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Connect</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com/in/bineeshrenjan" target="_blank" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-sm">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2 font-medium">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors"></textarea>
+                        </div>
+                        
+                        <button type="button" onclick="window.location.href='mailto:tr.bnrenjan@gmail.com'" class="w-full px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-opacity">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  </div>
-</section>
+    <footer class="bg-gray-100 dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">Bineesh Renjan</a>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">© 2026 All Rights Reserved</p>
+                </div>
+                
+                <div class="flex space-x-6 text-sm">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<!-- ================= SKILLS ================= -->
-<section id="skills" class="py-20 bg-gray-100">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-10">Core Skills</h2>
-    <ul class="grid md:grid-cols-2 gap-4 list-disc pl-6">
-      <li>Advanced Excel (Pivot Tables, XLOOKUP)</li>
-      <li>Power BI, Tableau, SQL (Basic)</li>
-      <li>Requirements Gathering, User Stories, Gherkin</li>
-      <li>BPMN 2.0 Process Mapping, Gap Analysis</li>
-      <li>Root Cause Analysis (5 Whys), SOP Documentation</li>
-      <li>Agile/Scrum, Jira, Confluence</li>
-      <li>Operational Risk, UK GDPR, Audit Readiness</li>
-      <li>Project Planning, Scope & Schedule Control</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="py-20">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-8">Contact</h2>
-    <p><strong>Email:</strong> tr.bnrenjan@gmail.com</p>
-    <p><strong>Phone:</strong> +44 7767 567345</p>
-    <p>
-      <strong>LinkedIn:</strong>
-      <a href="https://linkedin.com/in/bineeshrenjan" class="text-blue-600">
-        linkedin.com/in/bineeshrenjan
-      </a>
-    </p>
-    <p><strong>Location:</strong> Wales, United Kingdom</p>
-  </div>
-</section>
-
-<footer class="py-8 text-center bg-gray-200">
-  © 2026 Bineesh Renjan — Portfolio
-</footer>
-
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved user preference or use system preference
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation classes when elements come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animation = 'fadeIn 0.5s ease-in-out forwards';
+        });
+        
+        document.querySelectorAll('.animate-slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.animation = 'slideUp 0.5s ease-out forwards';
+        });
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on page load
+        window.addEventListener('load', animateOnScroll);
+    </script>
 </body>
 </html>
 
