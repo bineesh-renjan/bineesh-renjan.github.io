@@ -1,188 +1,200 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bineesh Renjan | Business Analyst</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bineesh Renjan | Business Analyst</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description"
+        content="Business Analyst with experience at Amazon, Power BI, BPMN, KPI reporting, GDPR compliance">
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { light: '#3b82f6', dark: '#2563eb' },
-                        secondary: { light: '#10b981', dark: '#059669' }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                        'slide-up': 'slideUp 0.5s ease-out'
-                    },
-                    keyframes: {
-                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } }
-                    }
-                }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { light: '#3b82f6', dark: '#2563eb' },
+            secondary: { light: '#10b981', dark: '#059669' }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-in-out',
+            'slide-up': 'slideUp 0.6s ease-out'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
             }
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        .gradient-text {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(45deg, #3b82f6, #10b981);
-        }
-        .project-card { transition: all 0.3s ease; }
-        .project-card:hover { transform: translateY(-5px); }
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: currentColor;
-            transition: width .3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-    </style>
+  <style>
+    .gradient-text {
+      background-image: linear-gradient(45deg, #3b82f6, #10b981);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .project-card {
+      transition: all 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+    }
+  </style>
 </head>
 
 <body class="light bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
 <!-- ================= HEADER ================= -->
 <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold gradient-text">Bineesh Renjan</a>
-        <div class="hidden md:flex space-x-8">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#experience" class="nav-link">Experience</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <span class="text-2xl font-bold gradient-text">Bineesh Renjan</span>
+    <div class="hidden md:flex space-x-8">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
+  </div>
 </header>
 
 <!-- ================= HERO ================= -->
 <section id="home" class="min-h-screen flex items-center pt-20">
-    <div class="container mx-auto px-6 py-20">
-        <div class="flex flex-col md:flex-row items-center">
+  <div class="container mx-auto px-6 py-20">
+    <div class="flex flex-col md:flex-row items-center">
 
-            <div class="md:w-1/2 mb-12 animate-fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">
-                    Hi, I'm <span class="gradient-text">Bineesh</span>
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6">
-                    Business Analyst | Process & Data
-                </h2>
-                <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg">
-                    Results-oriented Analyst with over 3 years of experience driving operational excellence and data-driven
-                    decision-making across logistics and retail environments. Proven track record in BPM and process
-                    optimisation, delivering a 12% efficiency gain and 35% defect reduction at Amazon.
-                </p>
-            </div>
+      <!-- TEXT -->
+      <div class="md:w-1/2 mb-12 animate-fade-in">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          Hi, I’m <span class="gradient-text">Bineesh</span>
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
+          Business Analyst | Process & Data
+        </h2>
+        <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg">
+          Results-oriented Analyst with over 3 years of experience driving operational excellence
+          and data-driven decision-making across logistics and retail environments.
+        </p>
 
-            <div class="md:w-1/2 flex justify-center animate-slide-up">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-light">
-                    <img src="./assets/profile.jpg"
-                         alt="Bineesh Renjan"
-                         class="w-full h-full object-cover object-top">
-                </div>
-            </div>
-
+        <div class="flex gap-4">
+          <a href="./assets/BINEESH_RENJAN.pdf"
+             download
+             class="px-6 py-3 bg-secondary-light text-white rounded-lg hover:opacity-90">
+            Download CV
+          </a>
         </div>
+      </div>
+
+      <!-- PHOTO (FIXED PROPERLY) -->
+      <div class="md:w-1/2 flex justify-center animate-slide-up">
+        <div class="relative w-72 h-96 rounded-2xl overflow-hidden
+                    border-4 border-primary-light shadow-lg">
+          <img src="./assets/profile.jpg"
+               alt="Bineesh Renjan"
+               class="w-full h-full object-cover object-top">
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center">
-            About <span class="gradient-text">Me</span>
-        </h2>
+<!-- ================= CERTIFICATIONS ================= -->
+<section class="py-20">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-12">
+      Certifications <span class="gradient-text">& Tools</span>
+    </h2>
 
-        <div class="max-w-4xl mx-auto text-center">
-            <p class="mb-6 text-gray-600 dark:text-gray-300">
-                Experienced in BPMN 2.0 modelling, UAT, KPI reporting, and project coordination within Agile environments
-                using Jira and Confluence. Adept at leveraging Power BI, Tableau, and SQL to generate actionable insights,
-                reduce inventory risk by 40%, and ensure GDPR compliance across global operations.
-            </p>
-            <p class="text-gray-600 dark:text-gray-300">
-                <strong>Location:</strong> Wales, United Kingdom<br>
-                <strong>Mobility:</strong> Immediate Start | Work Permit Sponsorship required | Willing to Relocate
-            </p>
-        </div>
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+        <i class="fab fa-microsoft text-5xl text-blue-600 animate-bounce mb-4"></i>
+        <h3 class="font-semibold">Microsoft Project Management</h3>
+      </div>
+
+      <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+        <i class="fab fa-google text-5xl text-red-500 animate-pulse mb-4"></i>
+        <h3 class="font-semibold">Google Data Analytics</h3>
+      </div>
+
+      <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+        <img src="./assets/cfi.svg" class="w-16 mx-auto mb-4 animate-pulse">
+        <h3 class="font-semibold">Corporate Finance Institute</h3>
+      </div>
+
     </div>
-</section>
-
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience" class="py-20">
-    <div class="container mx-auto px-6 max-w-5xl">
-        <h2 class="text-3xl font-bold mb-12 text-center">
-            Professional <span class="gradient-text">Experience</span>
-        </h2>
-
-        <ul class="space-y-8">
-            <li>
-                <h3 class="font-semibold text-xl">Process Lead — Amazon (Bristol, UK)</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Coordinated daily operational plans for 10–20 associates, improved UPH by 8–12%, reduced defects by 35%,
-                    and delivered data-led performance tracking using Power BI and Excel.
-                </p>
-            </li>
-            <li>
-                <h3 class="font-semibold text-xl">Business Analyst Intern — Victoria Solutions</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Automated KPI reporting (40% faster), mapped BPMN 2.0 processes, and strengthened SLA adherence.
-                </p>
-            </li>
-        </ul>
-    </div>
+  </div>
 </section>
 
 <!-- ================= SKILLS ================= -->
 <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center">
-            Core <span class="gradient-text">Skills</span>
-        </h2>
+  <div class="container mx-auto px-6 max-w-4xl">
+    <h2 class="text-3xl font-bold mb-12 text-center">
+      Skill <span class="gradient-text">Proficiency</span>
+    </h2>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <span>Power BI</span>
-            <span>Tableau</span>
-            <span>Excel (Advanced)</span>
-            <span>SQL (Basic)</span>
-            <span>BPMN 2.0</span>
-            <span>Agile / Scrum</span>
-            <span>Jira & Confluence</span>
-            <span>UK GDPR</span>
+    <div class="space-y-6">
+
+      <div>
+        <div class="flex justify-between mb-1"><span>Power BI</span><span>90%</span></div>
+        <div class="w-full bg-gray-300 rounded-full h-3">
+          <div class="bg-primary-light h-3 rounded-full animate-slide-up" style="width:90%"></div>
         </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1"><span>Excel (Advanced)</span><span>95%</span></div>
+        <div class="w-full bg-gray-300 rounded-full h-3">
+          <div class="bg-primary-light h-3 rounded-full animate-slide-up" style="width:95%"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1"><span>SQL</span><span>70%</span></div>
+        <div class="w-full bg-gray-300 rounded-full h-3">
+          <div class="bg-secondary-light h-3 rounded-full animate-slide-up" style="width:70%"></div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="py-20">
-    <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-6">
-            Get In <span class="gradient-text">Touch</span>
-        </h2>
-        <p>Email: tr.bnrenjan@gmail.com</p>
-        <p>Phone: +44 7767 567345</p>
-        <p>
-            <a href="https://linkedin.com/in/bineeshrenjan" class="text-primary-light">
-                LinkedIn Profile
-            </a>
-        </p>
-    </div>
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">
+      Get In <span class="gradient-text">Touch</span>
+    </h2>
+    <p>Email: tr.bnrenjan@gmail.com</p>
+    <p>Phone: +44 7767 567345</p>
+    <p>
+      <a href="https://linkedin.com/in/bineeshrenjan"
+         class="text-primary-light">
+        LinkedIn Profile
+      </a>
+    </p>
+  </div>
 </section>
 
 <footer class="py-10 text-center bg-gray-100 dark:bg-gray-800">
-    © 2026 Bineesh Renjan
+  © 2026 Bineesh Renjan
 </footer>
 
 </body>
 </html>
+
