@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bineesh Renjan | Business Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#2563eb', /* Royal Blue */
+                            dark: '#1d4ed8'
+                        },
+                        secondary: {
+                            light: '#0891b2', /* Cyan/Teal */
+                            dark: '#0e7490'
+                        }
+                    },
+                    animation: {
+                        'blink': 'blink 1s step-end infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Utilities */
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .light .gradient-text {
+            background-image: linear-gradient(45deg, #2563eb, #0891b2);
+        }
+        .dark .gradient-text {
+            background-image: linear-gradient(45deg, #60a5fa, #22d3ee);
+        }
+        
+        /* Card Hover Effects */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Nav Link Underline Animation */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Initial States for Scroll Animation */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skill Bar Animation */
+        .skill-progress {
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        
+        /* Typing Cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+    </style>
+</head>
+<body class="light bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 overflow-x-hidden">
+    
+    <header class="fixed w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold gradient-text tracking-tighter hover:scale-105 transition-transform">BR.</a>
+                
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#academic" class="nav-link">Academic Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="theme-toggle p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-transform hover:rotate-12">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg border-t dark:border-gray-700">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link block py-2">Home</a>
+                <a href="#about" class="nav-link block py-2">About</a>
+                <a href="#experience" class="nav-link block py-2">Experience</a>
+                <a href="#academic" class="nav-link block py-2">Academic Projects</a>
+                <a href="#skills" class="nav-link block py-2">Skills</a>
+                <a href="#education" class="nav-link block py-2">Education</a>
+                <a href="#contact" class="nav-link block py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="absolute top-20 right-0 -z-10 w-96 h-96 bg-primary-light/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -z-10 w-72 h-72 bg-secondary-light/10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 reveal-on-scroll">
+                    <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary-light dark:text-primary-dark uppercase bg-blue-50 dark:bg-gray-800 rounded-full">Available for Hire</span>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Hi, I'm <br><span class="gradient-text">Bineesh Renjan</span></h1>
+                    
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 h-10 flex items-center">
+                        <span id="typing-text" class="typing-cursor text-gray-700 dark:text-gray-200"></span>
+                    </h2>
+                    
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed">
+                        Driving operational excellence and data-driven decision-making. 
+                        [cite_start]I specialize in BPM, process optimization, and generating actionable insights using Power BI, Tableau, and SQL. [cite: 5, 6, 8]
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="px-8 py-4 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:shadow-lg hover:-translate-y-1 transition-all text-center font-semibold">
+                            Contact Me
+                        </a>
+                        <a href="#experience" class="px-8 py-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-center font-medium group">
+                            View Experience <i class="fas fa-arrow-down ml-2 group-hover:translate-y-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 animate-float">
+                        <div class="absolute inset-0 rounded-full border-4 border-primary-light dark:border-primary-dark shadow-2xl overflow-hidden z-10 bg-white">
+                            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80" 
+                                 alt="Bineesh Renjan" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary-light to-secondary-light rounded-full blur-md opacity-60 -z-10 transform scale-105"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center reveal-on-scroll">Professional <span class="gradient-text">Summary</span></h2>
+            
+            <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 reveal-on-scroll hover:shadow-2xl transition-shadow duration-300">
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div class="flex-shrink-0 text-4xl text-primary-light dark:text-primary-dark">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <div>
+                        <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                            Results-oriented Analyst with over 3 years of experience driving operational excellence and data-driven decision-making across logistics and retail environments. 
+                            [cite_start]I have a proven track record in Business Process Management (BPM) and process optimisation, delivering a 12% efficiency gain and 35% defect reduction at Amazon. [cite: 5, 6]
+                        </p>
+                        <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                            Experienced in BPMN 2.0 modelling, UAT, KPI reporting, and project coordination within Agile environments using Jira and Confluence. 
+                            [cite_start]I am adept at leveraging Power BI, Tableau, and SQL to generate actionable insights, reduce inventory risk by 40%, and ensure GDPR compliance across global operations. [cite: 7, 8]
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        [cite_start]<i class="fas fa-language mr-3 text-secondary-light"></i> Languages [cite: 14]
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm font-medium hover:bg-primary-light hover:text-white transition-colors cursor-default">English (Advanced)</span>
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm font-medium hover:bg-primary-light hover:text-white transition-colors cursor-default">Hindi (Intermediate)</span>
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm font-medium hover:bg-primary-light hover:text-white transition-colors cursor-default">French (A1)</span>
+                        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm font-medium hover:bg-primary-light hover:text-white transition-colors cursor-default">Malayalam (Advanced)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 text-center reveal-on-scroll">Work <span class="gradient-text">Experience</span></h2>
+            
+            <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent dark:before:via-gray-700">
+                
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal-on-scroll">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 bg-primary-light shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-box text-white text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 project-card">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">Process Lead</h3>
+                                <p class="text-primary-light dark:text-primary-dark font-medium">Amazon Fulfillment Center</p>
+                            </div>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 rounded">Apr 2025 - Current</span>
+                        </div>
+                        [cite_start]<p class="text-sm text-gray-500 mb-4 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Bristol, UK [cite: 17]</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Optimised labour allocation via live volume, improving UPH by 8-12%[cite: 18].</li>
+                            [cite_start]<li>Monitored project KPIs and operational risks, resolving blockers within 15 mins[cite: 19].</li>
+                            [cite_start]<li>Applied Root Cause Analysis (5 Whys) reducing repeat defects by 35%[cite: 20].</li>
+                            [cite_start]<li>Built UPH/DPMO trackers in Excel/Power BI reducing missed targets by 20%[cite: 21].</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal-on-scroll">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 bg-secondary-light shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-chart-bar text-white text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 project-card">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">Business Analyst Intern</h3>
+                                <p class="text-secondary-light dark:text-secondary-dark font-medium">Victoria Solutions</p>
+                            </div>
+                            <span class="text-xs font-semibold px-2 py-1 bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-200 rounded">Feb 2025 - Mar 2025</span>
+                        </div>
+                        [cite_start]<p class="text-sm text-gray-500 mb-4 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> London, UK [cite: 22]</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Automated weekly KPI reporting (40% faster) with Tableau on SQL/Excel[cite: 23].</li>
+                            [cite_start]<li>Mapped to-be processes using BPMN 2.0, reducing handoffs by 20%[cite: 24].</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal-on-scroll">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 bg-gray-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-handshake text-white text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 project-card">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">Corp. Relations Exec.</h3>
+                                <p class="text-gray-600 dark:text-gray-400 font-medium">Seventh Sense Solutions</p>
+                            </div>
+                            <span class="text-xs font-semibold px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">Apr 2022 - Sep 2022</span>
+                        </div>
+                        [cite_start]<p class="text-sm text-gray-500 mb-4 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Karnataka, India [cite: 32]</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Facilitated 10+ stakeholder workshops to capture requirements for $50k+ projects[cite: 33].</li>
+                            [cite_start]<li>Tracked 50+ action items, driving 10% efficiency improvement[cite: 34].</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal-on-scroll">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-gray-900 bg-gray-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-pills text-white text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 project-card">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">Business Ops Analyst</h3>
+                                <p class="text-gray-600 dark:text-gray-400 font-medium">PMJAK (Govt. Pharmacy)</p>
+                            </div>
+                            <span class="text-xs font-semibold px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">Dec 2020 - Mar 2022</span>
+                        </div>
+                        [cite_start]<p class="text-sm text-gray-500 mb-4 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Kerala, India [cite: 36]</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            [cite_start]<li>Introduced Power BI KPI suites reducing stockouts by 40% for 500+ SKUs[cite: 37].</li>
+                            [cite_start]<li>Coordinated UAT for POS enhancements across 10+ locations[cite: 38].</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="academic" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center reveal-on-scroll">Academic <span class="gradient-text">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-sm hover:shadow-lg transition-all reveal-on-scroll project-card">
+                    <div class="w-12 h-12 bg-primary-light/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-primary-light text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">MSc Thesis on AI & Big Data</h3>
+                    [cite_start]<p class="text-sm text-gray-500 mb-4 uppercase tracking-wide">Cardiff Met University [cite: 26]</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                        [cite_start]<li>Embedded privacy-by-design principles; completing 3 Data Protection Impact Assessments (DPIAs)[cite: 27].</li>
+                        [cite_start]<li>Authored proposal improving data access control policies by 20%[cite: 28].</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-sm hover:shadow-lg transition-all reveal-on-scroll project-card" style="transition-delay: 150ms;">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Sustainable Business Practices</h3>
+                    [cite_start]<p class="text-sm text-gray-500 mb-4 uppercase tracking-wide">Cardiff Council [cite: 29]</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                        [cite_start]<li>Devised processes driving a 15% improvement in resource efficiency across 5 departments[cite: 30].</li>
+                        [cite_start]<li>Prioritised sustainability backlog reducing projected carbon footprint by 10%[cite: 31].</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            [cite_start]<h2 class="text-3xl font-bold mb-12 text-center reveal-on-scroll">Technical <span class="gradient-text">Skills</span> [cite: 9]</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 reveal-on-scroll">
+                    <h3 class="font-bold text-lg mb-6 flex items-center text-primary-light">
+                        <i class="fas fa-chart-pie mr-2"></i> Data & Insights
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Power BI / Tableau</span>
+                                <span class="text-sm text-gray-500">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-primary-light h-2 rounded-full skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Excel (Pivot, XLOOKUP)</span>
+                                <span class="text-sm text-gray-500">Expert</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-primary-light h-2 rounded-full skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">SQL (Basic)</span>
+                                <span class="text-sm text-gray-500">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-primary-light h-2 rounded-full skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 reveal-on-scroll" style="transition-delay: 150ms;">
+                    <h3 class="font-bold text-lg mb-6 flex items-center text-secondary-light">
+                        <i class="fas fa-project-diagram mr-2"></i> Business Analysis
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">BPMN 2.0 Mapping</span>
+                                <span class="text-sm text-gray-500">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-secondary-light h-2 rounded-full skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">UAT & Requirements</span>
+                                <span class="text-sm text-gray-500">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-secondary-light h-2 rounded-full skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                         <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Root Cause Analysis</span>
+                                <span class="text-sm text-gray-500">Expert</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-secondary-light h-2 rounded-full skill-progress" data-width="92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 reveal-on-scroll" style="transition-delay: 300ms;">
+                    <h3 class="font-bold text-lg mb-6 flex items-center text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-tools mr-2"></i> Tools & Compliance
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm hover:scale-105 transition-transform">Agile/Scrum</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm hover:scale-105 transition-transform">Jira & Confluence</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm hover:scale-105 transition-transform">UK GDPR</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm hover:scale-105 transition-transform">MS Project</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm hover:scale-105 transition-transform">Operational Risk</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm hover:scale-105 transition-transform">Audit Readiness</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                
+                <div class="md:w-1/2 reveal-on-scroll">
+                    <h2 class="text-3xl font-bold mb-8 text-center md:text-left flex items-center">
+                        [cite_start]<i class="fas fa-graduation-cap text-gray-400 mr-4 text-2xl"></i> Education [cite: 39]
+                    </h2>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm mb-6 border-l-4 border-primary-light hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">MSc International Business Management</h3>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-semibold">Merit</span>
+                        </div>
+                        [cite_start]<p class="text-primary-light dark:text-primary-dark font-medium">Cardiff Metropolitan University, UK [cite: 44]</p>
+                        <p class="text-sm text-gray-500 mb-4">Sep 2023 - Oct 2024</p>
+                        [cite_start]<p class="text-sm text-gray-600 dark:text-gray-300">Strategy, operations, finance, and organizational change. [cite: 45]</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border-l-4 border-gray-300 dark:border-gray-600 hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">B Com: Finance & Actuarial Science</h3>
+                        </div>
+                        [cite_start]<p class="text-primary-light dark:text-primary-dark font-medium">Jain (Deemed-to-be) University, India [cite: 48]</p>
+                        <p class="text-sm text-gray-500 mb-4">Jul 2017 - Feb 2022</p>
+                        [cite_start]<p class="text-sm text-gray-600 dark:text-gray-300">Finance, economics, statistics; quantitative analysis. [cite: 49]</p>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 reveal-on-scroll" style="transition-delay: 200ms;">
+                    <h2 class="text-3xl font-bold mb-8 text-center md:text-left flex items-center">
+                        <i class="fas fa-award text-gray-400 mr-4 text-2xl"></i> Certifications
+                    </h2>
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm h-full">
+                        <div class="space-y-6">
+                            <div class="flex items-start group">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-microsoft text-blue-600 dark:text-blue-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold group-hover:text-primary-light transition-colors">Microsoft Project Management Fundamentals</h4>
+                                    [cite_start]<p class="text-sm text-gray-500">Feb 2026 [cite: 40]</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start group">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-google text-red-600 dark:text-red-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold group-hover:text-primary-light transition-colors">Google Professional Data Analytics</h4>
+                                    [cite_start]<p class="text-sm text-gray-500">Nov 2024 [cite: 41]</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start group">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-chart-line text-purple-600 dark:text-purple-300"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold group-hover:text-primary-light transition-colors">Corporate Finance Institute (CFI) Suite</h4>
+                                    [cite_start]<p class="text-sm text-gray-500">Jan 2022 [cite: 51-57]</p>
+                                    <div class="flex flex-wrap gap-2 mt-2">
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded">Excel Formulas</span>
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded">Capital Markets</span>
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded">Economics</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center reveal-on-scroll">Get In <span class="gradient-text">Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden reveal-on-scroll">
+                <div class="md:w-1/2 p-12 bg-gradient-to-br from-primary-light to-primary-dark text-white">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="mb-8 text-blue-100">
+                        I am available for immediate start and willing to relocate upon offer.
+                        [cite_start]Work Permit Sponsorship required. [cite: 2, 3]
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm opacity-75">Email</h4>
+                                <a href="mailto:tr.bnrenjan@gmail.com" class="hover:text-white hover:underline transition-all">tr.bnrenjan@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm opacity-75">Phone</h4>
+                                [cite_start]<p>+44 7767 567345 [cite: 2]</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-sm opacity-75">Location</h4>
+                                [cite_start]<p>Wales, United Kingdom [cite: 2]</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="font-semibold mb-4 text-sm opacity-75">Connect</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com/in/bineeshrenjan" target="_blank" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary-dark transition-all">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 p-12">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light bg-transparent transition-all">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light bg-transparent transition-all">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block mb-2 text-sm font-medium">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light bg-transparent transition-all"></textarea>
+                        </div>
+                        
+                        <button type="button" onclick="window.location.href='mailto:tr.bnrenjan@gmail.com'" class="w-full px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 hover:shadow-lg transition-all transform hover:-translate-y-1">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-100 dark:bg-gray-800 py-8 border-t dark:border-gray-700">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-600 dark:text-gray-300 text-sm">© 2026 Bineesh Renjan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. Dark Mode Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // --- 2. Mobile Menu ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 3. Typing Effect ---
+        const typingText = document.getElementById('typing-text');
+        const phrases = ["Business Analyst", "Operations Analyst", "Process Optimizer", "Data Specialist"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(type, 2000); // Wait before deleting
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(type, 500); // Wait before typing next
+            } else {
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(type, speed);
+            }
+        }
+        
+        // Start typing on load
+        document.addEventListener('DOMContentLoaded', type);
+
+        // --- 4. Intersection Observer for Scroll Animations ---
+        
+        const observerOptions = {
+            threshold: 0.1, // Trigger when 10% of element is visible
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    
+                    // Specific logic for skill bars inside the revealed section
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = width;
+                    });
+                    
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // --- 5. Navbar Transition on Scroll ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('shadow-md', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+    </script>
+</body>
+</html>
