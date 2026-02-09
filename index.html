@@ -14,6 +14,13 @@
                 extend: {
                     animation: {
                         'spin-slow': 'spin 8s linear infinite',
+                        'pulse-blue': 'pulseBlue 2s infinite',
+                    },
+                    keyframes: {
+                        pulseBlue: {
+                            '0%, 100%': { color: '#2563eb', transform: 'scale(1)', opacity: '1' },
+                            '50%': { color: '#60a5fa', transform: 'scale(1.2)', opacity: '0.8' },
+                        }
                     }
                 }
             }
@@ -70,15 +77,13 @@
             transform: translateY(0px);
         }
 
-        /* --- 4. QUOTE ANIMATION --- */
-        @keyframes quote-pulse {
-            0%, 100% { transform: scale(1); opacity: 1; text-shadow: 0 0 5px rgba(37, 99, 235, 0.5); }
-            50% { transform: scale(1.2); opacity: 0.8; text-shadow: 0 0 15px rgba(37, 99, 235, 0.8); }
+        /* --- 4. CUSTOM SCROLLBAR FOR CAROUSEL --- */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        .quote-anim {
-            display: inline-block;
-            animation: quote-pulse 2s infinite ease-in-out;
-            color: #2563eb; /* Blue-600 */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
 </head>
@@ -154,12 +159,12 @@
             <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white reveal">Professional Summary</h2>
             <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 reveal">
                 <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    <i class="fas fa-quote-left text-3xl mr-2 quote-anim"></i>
+                    <i class="fas fa-quote-left text-3xl mr-3 animate-pulse-blue align-top"></i>
                     Results-oriented Analyst with over 3 years of experience driving operational excellence and data-driven decision-making across logistics and retail environments. I have a proven track record in Business Process Management (BPM) and process optimisation, delivering a 12% efficiency gain and 35% defect reduction at Amazon.
                 </p>
                 <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-right">
                     Experienced in BPMN 2.0 modelling, UAT, KPI reporting, and project coordination within Agile environments using Jira and Confluence. I am adept at leveraging Power BI, Tableau, and SQL to generate actionable insights, reduce inventory risk by 40%, and ensure GDPR compliance across global operations.
-                    <i class="fas fa-quote-right text-3xl ml-2 quote-anim"></i>
+                    <i class="fas fa-quote-right text-3xl ml-3 animate-pulse-blue align-bottom"></i>
                 </p>
             </div>
             
@@ -298,18 +303,18 @@
     </section>
 
     <section id="testimonials" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 dark:text-white reveal">Representative Feedback</h2>
             <p class="text-center text-gray-500 dark:text-gray-400 mb-12 reveal">Manager & Client Appreciation</p>
             
-            <div class="relative max-w-4xl mx-auto reveal">
-                <div class="overflow-hidden rounded-2xl relative min-h-[300px]">
-                    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
+            <div class="relative reveal">
+                <div class="overflow-hidden rounded-2xl relative min-h-[350px] md:min-h-[280px] bg-white dark:bg-gray-800 shadow-md">
+                    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out h-full">
                         
-                        <div class="w-full flex-shrink-0 p-4">
-                            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md h-full relative">
-                                <i class="fas fa-quote-left text-4xl text-blue-100 dark:text-blue-900/50 absolute top-6 left-6"></i>
-                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 pt-6 text-lg">
+                        <div class="w-full flex-shrink-0 p-8 md:p-12 flex flex-col justify-center">
+                            <div class="relative">
+                                <i class="fas fa-quote-left text-4xl text-blue-100 dark:text-blue-900/50 absolute -top-4 -left-4"></i>
+                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 text-lg md:text-xl leading-relaxed">
                                     “Bineesh demonstrated strong operational leadership and analytical judgement in a high-velocity environment. He consistently took ownership of process performance... and brought discipline to complex operational challenges.”
                                 </p>
                                 <div class="flex items-center">
@@ -322,10 +327,10 @@
                             </div>
                         </div>
 
-                        <div class="w-full flex-shrink-0 p-4">
-                            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md h-full relative">
-                                <i class="fas fa-quote-left text-4xl text-teal-100 dark:text-teal-900/50 absolute top-6 left-6"></i>
-                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 pt-6 text-lg">
+                        <div class="w-full flex-shrink-0 p-8 md:p-12 flex flex-col justify-center">
+                            <div class="relative">
+                                <i class="fas fa-quote-left text-4xl text-teal-100 dark:text-teal-900/50 absolute -top-4 -left-4"></i>
+                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 text-lg md:text-xl leading-relaxed">
                                     “Bineesh brought a structured, analytical approach to client engagements... His work on KPI automation significantly improved visibility for leadership and supported faster, data-driven decision-making.”
                                 </p>
                                 <div class="flex items-center">
@@ -338,10 +343,10 @@
                             </div>
                         </div>
 
-                        <div class="w-full flex-shrink-0 p-4">
-                            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md h-full relative">
-                                <i class="fas fa-quote-left text-4xl text-purple-100 dark:text-purple-900/50 absolute top-6 left-6"></i>
-                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 pt-6 text-lg">
+                        <div class="w-full flex-shrink-0 p-8 md:p-12 flex flex-col justify-center">
+                            <div class="relative">
+                                <i class="fas fa-quote-left text-4xl text-purple-100 dark:text-purple-900/50 absolute -top-4 -left-4"></i>
+                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 text-lg md:text-xl leading-relaxed">
                                     “He approached sustainability challenges with a practical, data-driven mindset... His recommendations delivered actionable insights that supported improved resource efficiency and sustainability planning.”
                                 </p>
                                 <div class="flex items-center">
@@ -353,6 +358,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -470,7 +476,10 @@
                         <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-blue-600 relative hover:shadow-md transition-all reveal">
                             <span class="absolute top-6 right-6 px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">Merit</span>
                             <h3 class="text-xl font-bold text-gray-900 dark:text-white">MSc International Business Management</h3>
-                            <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-bold px-2 py-1 rounded mt-1 mb-2">RQF Level 7</span>
+                            
+                            <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded shadow-sm my-2">
+                                RQF Level 7
+                            </span>
                             
                             <p class="text-blue-600 dark:text-blue-400 font-medium">Cardiff Metropolitan University, UK</p>
                             <p class="text-gray-500 dark:text-gray-400 text-sm mb-4"><i class="far fa-calendar-alt mr-2"></i>Sep 2023 - Oct 2024</p>
@@ -496,7 +505,7 @@
                         <i class="fas fa-certificate text-purple-600 mr-3"></i>Certifications
                     </h2>
                     <div class="space-y-6">
-                        <div class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all reveal cursor-pointer group">
+                        <a href="microsoft.pdf" target="_blank" class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all reveal cursor-pointer group">
                             <div class="flex-shrink-0 mr-4">
                                 <img src="microsoft-color.png" alt="Microsoft" class="w-12 h-12 object-contain">
                             </div>
@@ -506,7 +515,8 @@
                                 </h4>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Feb 2026</p>
                             </div>
-                        </div>
+                            <i class="fas fa-external-link-alt text-gray-400 group-hover:text-blue-500 mt-1"></i>
+                        </a>
 
                         <a href="google.pdf" target="_blank" class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all reveal cursor-pointer group">
                             <div class="flex-shrink-0 mr-4">
@@ -532,13 +542,19 @@
                                 <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Jan 2022</p>
                                 <div class="flex flex-wrap gap-2">
                                     <a href="excel1.pdf" target="_blank" class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:text-purple-700 transition-colors flex items-center">
-                                        <i class="fas fa-file-excel mr-1"></i> Excel Formulas
+                                        <i class="fas fa-file-excel mr-1"></i> Excel
                                     </a>
                                     <a href="economics.pdf" target="_blank" class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:text-purple-700 transition-colors flex items-center">
                                         <i class="fas fa-globe mr-1"></i> Economics
                                     </a>
                                     <a href="excel2.pdf" target="_blank" class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:text-purple-700 transition-colors flex items-center">
                                         <i class="fas fa-chart-line mr-1"></i> Valuation
+                                    </a>
+                                    <a href="math.pdf" target="_blank" class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:text-purple-700 transition-colors flex items-center">
+                                        <i class="fas fa-calculator mr-1"></i> Math
+                                    </a>
+                                    <a href="markets.pdf" target="_blank" class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:text-purple-700 transition-colors flex items-center">
+                                        <i class="fas fa-university mr-1"></i> Markets
                                     </a>
                                 </div>
                             </div>
@@ -625,19 +641,15 @@
                 <a href="https://www.linkedin.com/in/bineesh-renjan-8963821b9/" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all transform hover:-translate-y-1">
                     <i class="fab fa-linkedin-in text-xl"></i>
                 </a>
-                
                 <a href="https://x.com/BineeshTr84472" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-black hover:scale-110 transition-all transform hover:-translate-y-1 overflow-hidden">
                     <img src="X.png" alt="X" class="w-6 h-6 object-contain filter dark:invert">
                 </a>
-
                 <a href="https://www.facebook.com/bineesh.tr.96/" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-blue-700 hover:bg-blue-800 hover:text-white transition-all transform hover:-translate-y-1">
                     <i class="fab fa-facebook-f text-xl"></i>
                 </a>
-                
                 <a href="https://www.instagram.com/b_i_n_e_e_s_h_tr/" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-pink-600 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:text-white transition-all transform hover:-translate-y-1">
                     <i class="fab fa-instagram text-xl"></i>
                 </a>
-
                 <a href="https://wa.me/447767567345" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 hover:scale-110 transition-all transform hover:-translate-y-1 overflow-hidden">
                     <img src="whatsapp.png" alt="WhatsApp" class="w-7 h-7 object-contain">
                 </a>
