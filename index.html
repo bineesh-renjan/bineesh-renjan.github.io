@@ -21,13 +21,11 @@
     </script>
 
     <style>
-        /* Neon Glow Effect for Profile Image */
+        /* --- 1. NEON GLOW EFFECTS --- */
         .neon-wrapper {
             position: relative;
             display: inline-block;
         }
-        
-        /* The glowing ring behind */
         .neon-glow {
             position: absolute;
             top: -5px; left: -5px; right: -5px; bottom: -5px;
@@ -38,8 +36,6 @@
             filter: blur(10px);
             animation: glowing 3s ease infinite;
         }
-
-        /* The solid ring */
         .neon-ring {
             position: absolute;
             top: -2px; left: -2px; right: -2px; bottom: -2px;
@@ -47,11 +43,31 @@
             border-radius: 50%;
             z-index: 0;
         }
-
         @keyframes glowing {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        /* --- 2. FLOATING ANIMATION --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* --- 3. SCROLL POP-UP ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0px);
         }
     </style>
 </head>
@@ -84,16 +100,19 @@
     <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             
-            <div class="space-y-6 order-2 md:order-1">
+            <div class="space-y-6 order-2 md:order-1 reveal active">
                 <span class="inline-block px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-semibold text-sm">
                     Available for Hire
                 </span>
                 <h1 class="text-5xl md:text-6xl font-bold leading-tight">
                     Hi, I'm <span class="text-blue-600 dark:text-blue-400">Bineesh Renjan</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-light">
-                    Business Analyst | Project Coordinator | Data Strategist
+                
+                <h2 class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light leading-relaxed">
+                    Business Analyst | Operations Analyst <br> 
+                    Project Coordinator | Business Operations Analyst
                 </h2>
+                
                 <p class="text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
                     Driving operational excellence and data-driven decision-making. I specialize in BPM, process optimization, and generating actionable insights using Power BI, Tableau, and SQL.
                 </p>
@@ -107,8 +126,8 @@
                 </div>
             </div>
             
-            <div class="order-1 md:order-2 flex justify-center">
-                <div class="neon-wrapper w-72 h-72 md:w-96 md:h-96">
+            <div class="order-1 md:order-2 flex justify-center reveal active">
+                <div class="neon-wrapper w-72 h-72 md:w-96 md:h-96 float-animation">
                     <div class="neon-glow"></div>
                     <div class="neon-ring"></div>
                     <img src="profile.jpg" 
@@ -121,8 +140,8 @@
 
     <section id="about" class="py-20 bg-white dark:bg-gray-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">Professional Summary</h2>
-            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white reveal">Professional Summary</h2>
+            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 reveal">
                 <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                     Results-oriented Analyst with over 3 years of experience driving operational excellence and data-driven decision-making across logistics and retail environments. I have a proven track record in Business Process Management (BPM) and process optimisation, delivering a 12% efficiency gain and 35% defect reduction at Amazon.
                 </p>
@@ -131,7 +150,7 @@
                 </p>
             </div>
             
-            <div class="mt-12 text-center">
+            <div class="mt-12 text-center reveal">
                 <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white">Languages</h3>
                 <div class="flex flex-wrap justify-center gap-4">
                     <span class="px-6 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-medium"><i class="fas fa-language mr-2"></i>English (Advanced)</span>
@@ -144,10 +163,10 @@
 
     <section id="experience" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">Work Experience</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white reveal">Work Experience</h2>
             <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
                 
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
                     <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-100 dark:bg-blue-900 text-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i class="fas fa-box-open"></i>
                     </div>
@@ -169,7 +188,7 @@
                     </div>
                 </div>
 
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
                     <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-teal-100 dark:bg-teal-900 text-teal-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i class="fas fa-chart-bar"></i>
                     </div>
@@ -189,7 +208,7 @@
                     </div>
                 </div>
 
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
                     <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-purple-100 dark:bg-purple-900 text-purple-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -209,7 +228,7 @@
                     </div>
                 </div>
 
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
                     <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-red-100 dark:bg-red-900 text-red-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                         <i class="fas fa-briefcase-medical"></i>
                     </div>
@@ -235,9 +254,9 @@
 
     <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">Technical Skills</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white reveal">Technical Skills</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow reveal">
                     <div class="flex items-center mb-6">
                         <div class="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 mr-4">
                             <i class="fas fa-database text-xl"></i>
@@ -271,7 +290,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow reveal">
                     <div class="flex items-center mb-6">
                         <div class="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg text-purple-600 mr-4">
                             <i class="fas fa-project-diagram text-xl"></i>
@@ -305,7 +324,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow reveal">
                     <div class="flex items-center mb-6">
                         <div class="p-3 bg-green-100 dark:bg-green-900 rounded-lg text-green-600 mr-4">
                             <i class="fas fa-tools text-xl"></i>
@@ -330,11 +349,11 @@
             <div class="grid md:grid-cols-2 gap-12">
                 
                 <div>
-                    <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center">
+                    <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center reveal">
                         <i class="fas fa-graduation-cap text-blue-600 mr-3"></i>Education
                     </h2>
                     <div class="space-y-8">
-                        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-blue-600 relative hover:shadow-md transition-all">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-blue-600 relative hover:shadow-md transition-all reveal">
                             <span class="absolute top-6 right-6 px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">Merit</span>
                             <h3 class="text-xl font-bold text-gray-900 dark:text-white">MSc International Business Management</h3>
                             <p class="text-sm font-semibold text-gray-500 mb-1">(RQF Level 7)</p>
@@ -345,7 +364,7 @@
                             </p>
                         </div>
 
-                        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:shadow-md transition-all">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-gray-400 hover:shadow-md transition-all reveal">
                             <h3 class="text-xl font-bold text-gray-900 dark:text-white">B Com: Finance & Actuarial Science</h3>
                             <p class="text-sm font-semibold text-gray-500 mb-1">(UK Level 6 Equivalent)</p>
                             <p class="text-blue-600 dark:text-blue-400 font-medium">Jain (Deemed-to-be) University, India</p>
@@ -358,11 +377,11 @@
                 </div>
 
                 <div>
-                    <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center">
+                    <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center reveal">
                         <i class="fas fa-certificate text-purple-600 mr-3"></i>Certifications
                     </h2>
                     <div class="space-y-6">
-                        <div class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all reveal">
                             <div class="flex-shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-300 mr-4">
                                 <i class="fab fa-microsoft text-2xl"></i>
                             </div>
@@ -372,7 +391,7 @@
                             </div>
                         </div>
 
-                        <div class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all reveal">
                             <div class="flex-shrink-0 w-12 h-12 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center text-red-600 dark:text-red-300 mr-4">
                                 <i class="fab fa-google text-2xl"></i>
                             </div>
@@ -382,7 +401,7 @@
                             </div>
                         </div>
 
-                        <div class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-start bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-all reveal">
                             <div class="flex-shrink-0 w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-300 mr-4">
                                 <i class="fas fa-chart-line text-xl"></i>
                             </div>
@@ -405,9 +424,9 @@
 
     <section id="contact" class="py-20 bg-white dark:bg-gray-800/50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">Get In Touch</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white reveal">Get In Touch</h2>
             <div class="grid md:grid-cols-2 gap-12">
-                <div>
+                <div class="reveal">
                     <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white">Contact Information</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6">
                         I am available for immediate start and willing to relocate upon offer. 
@@ -447,7 +466,7 @@
                     </div>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-sm">
+                <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-sm reveal">
                     <h4 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Connect</h4>
                     <form action="mailto:tr.bnrenjan@gmail.com" method="post" enctype="text/plain" class="space-y-4">
                         <div>
@@ -499,17 +518,33 @@
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
+        // Theme Toggle
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark');
             localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
         });
 
-        // Check local storage for theme preference
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             html.classList.add('dark');
         } else {
             html.classList.remove('dark');
         }
+
+        // Scroll Reveal Script
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
     </script>
 </body>
 </html>
