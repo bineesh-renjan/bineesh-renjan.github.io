@@ -14,7 +14,6 @@
                 extend: {
                     animation: {
                         'spin-slow': 'spin 8s linear infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -73,29 +72,13 @@
 
         /* --- 4. QUOTE ANIMATION --- */
         @keyframes quote-pulse {
-            0%, 100% { transform: scale(1); opacity: 1; color: #2563eb; }
-            50% { transform: scale(1.1); opacity: 0.7; color: #06b6d4; }
+            0%, 100% { transform: scale(1); opacity: 1; text-shadow: 0 0 5px rgba(37, 99, 235, 0.5); }
+            50% { transform: scale(1.2); opacity: 0.8; text-shadow: 0 0 15px rgba(37, 99, 235, 0.8); }
         }
         .quote-anim {
-            animation: quote-pulse 3s infinite ease-in-out;
-            text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
-        }
-
-        /* --- 5. CAROUSEL STYLES --- */
-        .carousel-container {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-        }
-        .carousel-slide {
-            min-width: 100%;
-            flex-shrink: 0;
-            padding: 0 1rem;
+            display: inline-block;
+            animation: quote-pulse 2s infinite ease-in-out;
+            color: #2563eb; /* Blue-600 */
         }
     </style>
 </head>
@@ -169,18 +152,15 @@
     <section id="about" class="py-20 bg-white dark:bg-gray-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white reveal">Professional Summary</h2>
-            <div class="relative bg-gray-50 dark:bg-gray-800 p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 reveal max-w-4xl mx-auto">
-                
-                <span class="absolute top-4 left-4 text-6xl font-serif leading-none quote-anim">“</span>
-                
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 px-4">
+            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 reveal">
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                    <i class="fas fa-quote-left text-3xl mr-2 quote-anim"></i>
                     Results-oriented Analyst with over 3 years of experience driving operational excellence and data-driven decision-making across logistics and retail environments. I have a proven track record in Business Process Management (BPM) and process optimisation, delivering a 12% efficiency gain and 35% defect reduction at Amazon.
                 </p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed px-4">
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-right">
                     Experienced in BPMN 2.0 modelling, UAT, KPI reporting, and project coordination within Agile environments using Jira and Confluence. I am adept at leveraging Power BI, Tableau, and SQL to generate actionable insights, reduce inventory risk by 40%, and ensure GDPR compliance across global operations.
+                    <i class="fas fa-quote-right text-3xl ml-2 quote-anim"></i>
                 </p>
-
-                <span class="absolute bottom-[-20px] right-6 text-6xl font-serif leading-none quote-anim">”</span>
             </div>
             
             <div class="mt-12 text-center reveal">
@@ -318,68 +298,70 @@
     </section>
 
     <section id="testimonials" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold mb-4 text-center text-gray-900 dark:text-white reveal">Representative Feedback</h2>
             <p class="text-center text-gray-500 dark:text-gray-400 mb-12 reveal">Manager & Client Appreciation</p>
             
-            <div class="carousel-container rounded-2xl shadow-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 reveal" id="testimonialCarousel">
-                <div class="carousel-track" id="track">
-                    
-                    <div class="carousel-slide">
-                        <div class="p-8 md:p-12 text-center">
-                            <i class="fas fa-quote-left text-4xl text-blue-100 dark:text-blue-900/50 mb-6 block mx-auto"></i>
-                            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 italic mb-8 relative z-10 leading-relaxed">
-                                “Bineesh demonstrated strong operational leadership and analytical judgement in a high-velocity environment. He consistently took ownership of process performance... and brought discipline to complex operational challenges.”
-                            </p>
-                            <div class="inline-flex items-center justify-center">
-                                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 font-bold mr-4 text-lg">A</div>
-                                <div class="text-left">
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-base">Operations Manager</h4>
-                                    <p class="text-sm text-gray-500">Amazon</p>
+            <div class="relative max-w-4xl mx-auto reveal">
+                <div class="overflow-hidden rounded-2xl relative min-h-[300px]">
+                    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
+                        
+                        <div class="w-full flex-shrink-0 p-4">
+                            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md h-full relative">
+                                <i class="fas fa-quote-left text-4xl text-blue-100 dark:text-blue-900/50 absolute top-6 left-6"></i>
+                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 pt-6 text-lg">
+                                    “Bineesh demonstrated strong operational leadership and analytical judgement in a high-velocity environment. He consistently took ownership of process performance... and brought discipline to complex operational challenges.”
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 font-bold mr-4 text-xl">A</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 dark:text-white">Operations Manager</h4>
+                                        <p class="text-sm text-gray-500">Amazon</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex-shrink-0 p-4">
+                            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md h-full relative">
+                                <i class="fas fa-quote-left text-4xl text-teal-100 dark:text-teal-900/50 absolute top-6 left-6"></i>
+                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 pt-6 text-lg">
+                                    “Bineesh brought a structured, analytical approach to client engagements... His work on KPI automation significantly improved visibility for leadership and supported faster, data-driven decision-making.”
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center text-teal-600 font-bold mr-4 text-xl">V</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 dark:text-white">Training facilitator</h4>
+                                        <p class="text-sm text-gray-500">Victoria Solutions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex-shrink-0 p-4">
+                            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md h-full relative">
+                                <i class="fas fa-quote-left text-4xl text-purple-100 dark:text-purple-900/50 absolute top-6 left-6"></i>
+                                <p class="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 pt-6 text-lg">
+                                    “He approached sustainability challenges with a practical, data-driven mindset... His recommendations delivered actionable insights that supported improved resource efficiency and sustainability planning.”
+                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center text-purple-600 font-bold mr-4 text-xl">C</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 dark:text-white">Project Supervisor</h4>
+                                        <p class="text-sm text-gray-500">Cardiff Metropolitan University</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="carousel-slide">
-                        <div class="p-8 md:p-12 text-center">
-                            <i class="fas fa-quote-left text-4xl text-teal-100 dark:text-teal-900/50 mb-6 block mx-auto"></i>
-                            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 italic mb-8 relative z-10 leading-relaxed">
-                                “Bineesh brought a structured, analytical approach to client engagements... His work on KPI automation significantly improved visibility for leadership and supported faster, data-driven decision-making.”
-                            </p>
-                            <div class="inline-flex items-center justify-center">
-                                <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center text-teal-600 font-bold mr-4 text-lg">V</div>
-                                <div class="text-left">
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-base">Training facilitator</h4>
-                                    <p class="text-sm text-gray-500">Victoria Solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-slide">
-                        <div class="p-8 md:p-12 text-center">
-                            <i class="fas fa-quote-left text-4xl text-purple-100 dark:text-purple-900/50 mb-6 block mx-auto"></i>
-                            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 italic mb-8 relative z-10 leading-relaxed">
-                                “He approached sustainability challenges with a practical, data-driven mindset... His recommendations delivered actionable insights that supported improved resource efficiency and sustainability planning.”
-                            </p>
-                            <div class="inline-flex items-center justify-center">
-                                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center text-purple-600 font-bold mr-4 text-lg">C</div>
-                                <div class="text-left">
-                                    <h4 class="font-bold text-gray-900 dark:text-white text-base">Project Supervisor</h4>
-                                    <p class="text-sm text-gray-500">Cardiff Metropolitan University</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-                
-                <div class="flex justify-center pb-6 gap-2">
-                    <button class="w-3 h-3 rounded-full bg-blue-600 transition-all hover:bg-blue-400" onclick="goToSlide(0)"></button>
-                    <button class="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transition-all hover:bg-blue-400" onclick="goToSlide(1)"></button>
-                    <button class="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transition-all hover:bg-blue-400" onclick="goToSlide(2)"></button>
-                </div>
+
+                <button onclick="moveSlide(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-lg flex items-center justify-center text-blue-600 hover:text-blue-800 dark:text-blue-400 transition-all z-20">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="moveSlide(1)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-lg flex items-center justify-center text-blue-600 hover:text-blue-800 dark:text-blue-400 transition-all z-20">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -487,8 +469,9 @@
                     <div class="space-y-8">
                         <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border-l-4 border-blue-600 relative hover:shadow-md transition-all reveal">
                             <span class="absolute top-6 right-6 px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">Merit</span>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">MSc International Business Management</h3>
-                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full mb-2">RQF Level 7</span>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">MSc International Business Management</h3>
+                            <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-bold px-2 py-1 rounded mt-1 mb-2">RQF Level 7</span>
+                            
                             <p class="text-blue-600 dark:text-blue-400 font-medium">Cardiff Metropolitan University, UK</p>
                             <p class="text-gray-500 dark:text-gray-400 text-sm mb-4"><i class="far fa-calendar-alt mr-2"></i>Sep 2023 - Oct 2024</p>
                             <p class="text-gray-600 dark:text-gray-300">
@@ -667,10 +650,10 @@
     </footer>
 
     <script>
+        // --- 1. THEME TOGGLE ---
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
-        // Theme Toggle
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark');
             localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
@@ -682,7 +665,7 @@
             html.classList.remove('dark');
         }
 
-        // Scroll Reveal Script
+        // --- 2. SCROLL REVEAL ---
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -695,58 +678,45 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Trigger once on load
+        reveal();
 
-        // Carousel Script
+        // --- 3. TESTIMONIAL CAROUSEL LOGIC ---
         let currentSlide = 0;
-        const track = document.getElementById('track');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-container button');
+        const track = document.getElementById('carousel-track');
+        const slides = track.children;
         const totalSlides = slides.length;
-        let slideInterval;
 
         function updateSlidePosition() {
+            const width = track.clientWidth;
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            // Update dots
-            dots.forEach((dot, index) => {
-                if(index === currentSlide) {
-                    dot.classList.remove('bg-gray-300', 'dark:bg-gray-600');
-                    dot.classList.add('bg-blue-600');
-                } else {
-                    dot.classList.add('bg-gray-300', 'dark:bg-gray-600');
-                    dot.classList.remove('bg-blue-600');
-                }
+        }
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            updateSlidePosition();
+        }
+
+        // Auto Scroll every 6 seconds
+        let autoSlideInterval = setInterval(() => {
+            moveSlide(1);
+        }, 6000);
+
+        // Reset timer on manual click
+        const buttons = document.querySelectorAll('button[onclick^="moveSlide"]');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = setInterval(() => { moveSlide(1); }, 6000);
             });
-        }
+        });
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlidePosition();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlidePosition();
-            resetTimer();
-        }
-
-        function startTimer() {
-            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-        }
-
-        function resetTimer() {
-            clearInterval(slideInterval);
-            startTimer();
-        }
-
-        // Initialize
-        startTimer();
-
-        // Pause on hover
-        const carouselContainer = document.getElementById('testimonialCarousel');
-        carouselContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        carouselContainer.addEventListener('mouseleave', startTimer);
-
+        // Handle Window Resize
+        window.addEventListener('resize', updateSlidePosition);
     </script>
 </body>
 </html>
